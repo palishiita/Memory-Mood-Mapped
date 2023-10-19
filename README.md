@@ -1,2 +1,2 @@
 # Memory-Mood-Mapped
-A Personal Travel journal Mobile App
+A Personal Travel Journal IOS Mobile App
