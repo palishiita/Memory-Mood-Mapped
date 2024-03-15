@@ -1,10 +1,3 @@
-//
-//  PinAnnotation.swift
-//  MappedJournal
-//
-//  Created by BamaLiu on 2024/1/9.
-//
-
 import Foundation
 import MapKit
 
