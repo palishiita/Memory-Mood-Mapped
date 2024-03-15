@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Images" representedClassName="Images" syncable="YES" codeGenerationType="class">
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="imageID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="images" inverseEntity="Journal"/>
+    </entity>
+    <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class">
+        <attribute name="backgroundColor" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="emojiCategory" optional="YES" attributeType="String"/>
+        <attribute name="journalID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Images" inverseName="journal" inverseEntity="Images"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="journal" inverseEntity="Location"/>
+        <relationship name="mood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mood" inverseName="journals" inverseEntity="Mood"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="journal" inverseEntity="Pin"/>
+        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="journal" inverseEntity="Videos"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="journal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Journal" inverseName="location" inverseEntity="Journal"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="location" inverseEntity="Pin"/>
+    </entity>
+    <entity name="Mood" representedClassName="Mood" syncable="YES" codeGenerationType="class">
+        <attribute name="emojiCategory" optional="YES" attributeType="String"/>
+        <relationship name="journals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Journal" inverseName="mood" inverseEntity="Journal"/>
+    </entity>
+    <entity name="Pin" representedClassName="Pin" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryID" optional="YES" attributeType="String"/>
+        <attribute name="pinID" optional="YES" attributeType="String"/>
+        <attribute name="pinLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pinLongtitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="pin" inverseEntity="Journal"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="pin" inverseEntity="Location"/>
+        <relationship name="pinCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PinCategory" inverseName="pinCategory" inverseEntity="PinCategory"/>
+    </entity>
+    <entity name="PinCategory" representedClassName="PinCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryID" optional="YES" attributeType="String"/>
+        <attribute name="categoryName" optional="YES" attributeType="String"/>
+        <attribute name="categorySymbol" optional="YES" attributeType="String"/>
+        <relationship name="pinCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="pinCategory" inverseEntity="Pin"/>
+    </entity>
+    <entity name="Videos" representedClassName="Videos" syncable="YES" codeGenerationType="class">
+        <attribute name="videoData" optional="YES" attributeType="Binary"/>
+        <attribute name="videoID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="videos" inverseEntity="Journal"/>
+    </entity>
+</model>
